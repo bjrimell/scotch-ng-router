@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { dogRoutes }    from './dogs/dog.routes';
 import { catRoutes }    from './cats/cat.routes';
+import { placeRoutes }  from './places/place.routes';
 
 // Route Configuration
 export const routes: Routes = [
@@ -15,7 +16,8 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   ...catRoutes,
-  ...dogRoutes
+  ...dogRoutes,
+  ...placeRoutes
 ];
 
 // Deprecated provide

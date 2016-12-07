@@ -8,8 +8,12 @@ import { CatListComponent }   from './cats/cat-list.component';
 import { CatDetailsComponent }  from './cats/cat-details.component';
 import { DogListComponent }      from './dogs/dog-list.component';
 import { DogDetailsComponent }  from './dogs/dog-details.component';
+import { PlaceListComponent }      from './places/place-list.component';
+import { PlaceDetailsComponent }  from './places/place-details.component';
 import { PetService }          from './pet.service';
 import { Pet }          from './pet';
+import { JourneyService }          from './journey.service';
+import { Journey }          from './journey';
 import { routing } from './app.routes';
 
 @NgModule({
@@ -25,10 +29,13 @@ import { routing } from './app.routes';
     CatListComponent,
     CatDetailsComponent,
     DogListComponent,
-    DogDetailsComponent
+    DogDetailsComponent,
+    PlaceListComponent,
+    PlaceDetailsComponent
   ],
   providers: [
-    PetService
+    PetService,
+    JourneyService
   ],
   bootstrap: [ AppComponent ]
 })
