@@ -15,7 +15,7 @@ import { Journey } from '../journey';
       <li class="mdl-list__item" *ngFor="let place of places | async">
         <span class="mdl-list__item-primary-content">
             <i class="material-icons mdl-list__item-icon">places</i>
-            <a [routerLink]="['/places', place.id.$t]">{{place.name.$t}}</a>
+            <a [routerLink]="['/places', place.id]">{{place.title}}</a>
         </span>
       </li>
     </ul>
@@ -30,7 +30,7 @@ export class PlaceListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.places = this.journeyService.findJourneys('dog');
+    this.places = this.journeyService.findJourneys();
   }
 
 }
