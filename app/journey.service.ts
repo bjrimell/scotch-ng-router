@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class JourneyService {
   // Class constructor with Jsonp injected for CORS, Http also
-  constructor(private jsonp: Jsonp, private http: Http) { }
+  constructor(private jsonp: Jsonp) { }
   // Base URL for Petfinder API
   private databaseUrl = "http://localhost:8080/";
 
@@ -32,4 +32,26 @@ export class JourneyService {
                 .get(this.databaseUrl + endPoint, { search: params })
                 .map(response => <Journey[]> response.json());
   }
+
+    findJourneysByOrigin(origin: string) {
+    const endPoint = "api/journeys/from/" + origin;
+    console.log(endPoint);
+    let params = new URLSearchParams();
+    params.set('callback', 'JSONP_CALLBACK');
+
+    return this.jsonp
+                .get(this.databaseUrl + endPoint, { search: params })
+                .map(response => <Journey[]> response.json());
+  }
+
+    findJourneysByDestination(destination: string) {
+    const endPoint = "api/journeys/to/" + destination;
+        let params = new URLSearchParams();
+    params.set('callback', 'JSONP_CALLBACK');
+
+    return this.jsonp
+                .get(this.databaseUrl + endPoint, { search: params })
+                .map(response => <Journey[]> response.json());
+  }
+
 }

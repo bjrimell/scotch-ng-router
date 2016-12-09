@@ -1,4 +1,4 @@
 export class Journey {
-  name: string;
-  age: number;
+  origin: string;
+  destination: string;
 }
