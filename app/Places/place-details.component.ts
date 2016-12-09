@@ -30,7 +30,7 @@ export class PlaceDetailsComponent implements OnInit {
       this.sub = this.route.params.subscribe(params => {
         let id = params['id'];
        // Retrieve Pet with Id route param
-        this.placeService.findById(id).subscribe(place => this.place = place);
+        this.placeService.findPlaceByName(id).subscribe(place => this.place = place);
     });
   }
 

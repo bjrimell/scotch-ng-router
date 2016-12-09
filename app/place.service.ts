@@ -23,7 +23,7 @@ export class PlaceService {
                 .map(response => <Place[]> response.json());
   }
 
-findById(placeId: string) {
+findPlaceById(placeId: string) {
     const endPoint = "api/places/" + placeId;
         let params = new URLSearchParams();
     params.set('callback', 'JSONP_CALLBACK');
@@ -32,4 +32,15 @@ findById(placeId: string) {
                 .get(this.placesUrl + endPoint, { search: params })
                 .map(response => <Place[]> response.json());
   }
+
+  findPlaceByName(placeName: string) {
+    const endPoint = "api/places/specific/" + placeName;
+        let params = new URLSearchParams();
+    params.set('callback', 'JSONP_CALLBACK');
+
+    return this.jsonp
+                .get(this.placesUrl + endPoint, { search: params })
+                .map(response => <Place[]> response.json());
+  }
+
 }
