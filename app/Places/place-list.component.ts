@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { Journey } from '../journey';
 
+import { Place } from '../place';
+
 @Component({
   template: `
     <h2>Places</h2>
@@ -15,7 +17,7 @@ import { Journey } from '../journey';
       <li class="mdl-list__item" *ngFor="let place of places | async">
         <span class="mdl-list__item-primary-content">
             <i class="material-icons mdl-list__item-icon">places</i>
-            <a [routerLink]="['/places', place.id]">{{place.title}}</a>
+            <a [routerLink]="['/places', place._id]">{{place.name}}</a>
         </span>
       </li>
     </ul>
@@ -24,13 +26,13 @@ import { Journey } from '../journey';
 // Component class
 export class PlaceListComponent implements OnInit {
 
-  places: Observable<Journey[]>;
+  places: Observable<Place[]>;
   constructor(private journeyService: JourneyService) {
 
   }
 
   ngOnInit() {
-    this.places = this.journeyService.findJourneys();
+    this.places = this.journeyService.findPlaces();
   }
 
 }

@@ -1,7 +1,8 @@
 // Imports
 import { Injectable }    from '@angular/core';
 import { Jsonp, URLSearchParams, Http } from '@angular/http';
-import { Journey } from './journey'
+import { Journey } from './journey';
+import { Place } from './place';
 import 'rxjs/add/operator/map';
 
 
@@ -14,6 +15,17 @@ export class JourneyService {
   private petsUrl = 'http://api.petfinder.com/';
   private googleMapsUrl = "https://maps.googleapis.com/";
   private testDataUrl = "https://jsonplaceholder.typicode.com/";
+  private placesUrl = "http://localhost:8080/";
+
+  findPlaces() {
+    const endPoint = "api/places";
+        let params = new URLSearchParams();
+    params.set('callback', 'JSONP_CALLBACK');
+
+    return this.jsonp
+                .get(this.placesUrl + endPoint, { search: params })
+                .map(response => <Place[]> response.json());
+  }
 
   // Get a list of journeys
   findJourneys() {
