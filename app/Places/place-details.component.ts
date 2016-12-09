@@ -1,17 +1,15 @@
 // Imports
 import { Component, OnInit } from '@angular/core';
-import { PetService } from '../pet.service'
+import { JourneyService } from '../journey.service'
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   template: `
     <div *ngIf="place">
-        <h2>{{place.name.$t}}</h2>
-        <img src="{{place.media.photos.photo[3].$t}}"/>
-        <p><strong>Age: </strong>{{place.age.$t}}</p>
-        <p><strong>Sex: </strong>{{place.sex.$t}}</p>
-        <p><strong>Description: </strong>{{place.description.$t}}</p>
+        <h2>{{place.name}}</h2>
+        <p><strong>Name: </strong>{{place.name}}</p>
+        <p><strong>Country: </strong>{{place.country}}</p>
     </div>
     `,
     
@@ -22,7 +20,7 @@ export class PlaceDetailsComponent implements OnInit {
   private sub:any;
   private place:string[];
 
-  constructor(private petService: PetService, private route: ActivatedRoute) {
+  constructor(private journeyService: JourneyService, private route: ActivatedRoute) {
 
   }
 
@@ -32,7 +30,7 @@ export class PlaceDetailsComponent implements OnInit {
       this.sub = this.route.params.subscribe(params => {
         let id = params['id'];
        // Retrieve Pet with Id route param
-        this.petService.findPetById(id).subscribe(place => this.place = place);
+        this.journeyService.findPlaceById(id).subscribe(place => this.place = place);
     });
   }
 

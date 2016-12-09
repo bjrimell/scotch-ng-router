@@ -27,6 +27,16 @@ export class JourneyService {
                 .map(response => <Place[]> response.json());
   }
 
+    findPlaceById(placeId: string) {
+    const endPoint = "api/places/" + placeId;
+        let params = new URLSearchParams();
+    params.set('callback', 'JSONP_CALLBACK');
+
+    return this.jsonp
+                .get(this.placesUrl + endPoint, { search: params })
+                .map(response => <Place[]> response.json());
+  }
+
   // Get a list of journeys
   findJourneys() {
     // End point for list of places:
