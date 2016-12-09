@@ -1,6 +1,6 @@
 // Imports
 import { Component, OnInit } from '@angular/core';
-import { JourneyService } from '../journey.service'
+import { PlaceService } from '../place.service';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,9 +18,9 @@ import { ActivatedRoute } from '@angular/router';
 export class PlaceDetailsComponent implements OnInit {
   // Private properties for binding
   private sub:any;
-  private place:string[];
+  private place:Observable<Place>;
 
-  constructor(private journeyService: JourneyService, private route: ActivatedRoute) {
+  constructor(private placeService: PlaceService, private route: ActivatedRoute) {
 
   }
 
@@ -30,7 +30,7 @@ export class PlaceDetailsComponent implements OnInit {
       this.sub = this.route.params.subscribe(params => {
         let id = params['id'];
        // Retrieve Pet with Id route param
-        this.journeyService.findPlaceById(id).subscribe(place => this.place = place);
+        this.placeService.findById(id).subscribe(place => this.place = place);
     });
   }
 

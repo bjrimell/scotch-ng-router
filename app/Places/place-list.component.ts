@@ -1,11 +1,9 @@
 // Import component decorator
 import { Component, OnInit } from '@angular/core';
 
-import { JourneyService } from '../journey.service'
+import { PlaceService } from '../place.service';
 
 import { Observable } from 'rxjs/Observable';
-
-import { Journey } from '../journey';
 
 import { Place } from '../place';
 
@@ -27,12 +25,12 @@ import { Place } from '../place';
 export class PlaceListComponent implements OnInit {
 
   places: Observable<Place[]>;
-  constructor(private journeyService: JourneyService) {
+  constructor(private placeService: PlaceService) {
 
   }
 
   ngOnInit() {
-    this.places = this.journeyService.findPlaces();
+    this.places = this.placeService.findPlaces();
   }
 
 }

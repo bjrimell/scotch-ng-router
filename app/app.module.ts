@@ -13,6 +13,7 @@ import { PlaceDetailsComponent }  from './places/place-details.component';
 import { PetService }          from './pet.service';
 import { Pet }          from './pet';
 import { JourneyService }          from './journey.service';
+import { PlaceService }          from './place.service';
 import { Journey }          from './journey';
 import { routing } from './app.routes';
 
@@ -35,7 +36,8 @@ import { routing } from './app.routes';
   ],
   providers: [
     PetService,
-    JourneyService
+    JourneyService,
+    PlaceService
   ],
   bootstrap: [ AppComponent ]
 })
