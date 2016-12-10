@@ -54,4 +54,14 @@ export class JourneyService {
                 .map(response => <Journey[]> response.json());
   }
 
+    findJourneysByOriginAndDestination(origin: string, destination: string) {
+    const endPoint = "api/journeys/from/" + origin + "/to/" + destination;
+    console.log(this.databaseUrl + endPoint);
+        let params = new URLSearchParams();
+    params.set('callback', 'JSONP_CALLBACK');
+    return this.jsonp
+                .get(this.databaseUrl + endPoint, { search: params })
+                .map(response => <Journey[]> response.json());
+  }
+
 }

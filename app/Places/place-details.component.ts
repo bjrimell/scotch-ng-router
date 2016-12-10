@@ -18,7 +18,7 @@ import { Journey } from '../journey';
           <li class="mdl-list__item" *ngFor="let journey of journeysFromHere | async">
             <span class="mdl-list__item-primary-content">
                 <i class="material-icons mdl-list__item-icon">flags</i>
-                <a [routerLink]="['/journey', journey.origin + '-to-' + journey.destination]">{{journey.origin}} to {{journey.destination}}</a>
+                <a [routerLink]="['/journey', 'how-to-get-from', journey.origin, 'to', journey.destination]">{{journey.origin}} to {{journey.destination}}</a>
             </span>
           </li>
         </ul>
@@ -27,7 +27,7 @@ import { Journey } from '../journey';
           <li class="mdl-list__item" *ngFor="let journey of journeysToHere | async">
             <span class="mdl-list__item-primary-content">
                 <i class="material-icons mdl-list__item-icon">flags</i>
-                <a [routerLink]="['/journey', journey.origin + '-to-' + journey.destination]">{{journey.origin}} to {{journey.destination}}</a>
+                <a [routerLink]="['/journey', 'how-to-get-from', journey.origin, 'to', journey.destination]">{{journey.origin}} to {{journey.destination}}</a>
             </span>
           </li>
         </ul>

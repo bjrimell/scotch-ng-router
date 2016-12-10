@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { dogRoutes }    from './dogs/dog.routes';
 import { catRoutes }    from './cats/cat.routes';
 import { placeRoutes }  from './places/place.routes';
+import { journeyRoutes }  from './journeys/journey.routes';
 
 // Route Configuration
 export const routes: Routes = [
@@ -17,7 +18,8 @@ export const routes: Routes = [
   },
   ...catRoutes,
   ...dogRoutes,
-  ...placeRoutes
+  ...placeRoutes,
+    ...journeyRoutes
 ];
 
 // Deprecated provide

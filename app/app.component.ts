@@ -11,20 +11,18 @@ import { Component } from '@angular/core';
       <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">Scotch Pets</span>
+          <span><a class="mdl-layout-title" [routerLink]="['/']">Crowd Routes</a></span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation with router directives-->
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link" [routerLink]="['/']">Home</a>
-            <a class="mdl-navigation__link" [routerLink]="['/cats']">Cats</a>
-            <a class="mdl-navigation__link" [routerLink]="['/dogs']">Dogs</a>
             <a class="mdl-navigation__link" [routerLink]="['/places']">Places</a>
           </nav>
         </div>
       </header>
       <main class="mdl-layout__content">
-        <h1 class="header-text">We care about pets...</h1>
+        <h1 class="header-text">Welcome to Crowd Routes</h1>
       </main>
     </div>
     <!-- Router Outlet -->

@@ -10,6 +10,7 @@ import { DogListComponent }      from './dogs/dog-list.component';
 import { DogDetailsComponent }  from './dogs/dog-details.component';
 import { PlaceListComponent }      from './places/place-list.component';
 import { PlaceDetailsComponent }  from './places/place-details.component';
+import { JourneyListComponent }  from './journeys/journey-list.component';
 import { PetService }          from './pet.service';
 import { Pet }          from './pet';
 import { JourneyService }          from './journey.service';
@@ -32,7 +33,8 @@ import { routing } from './app.routes';
     DogListComponent,
     DogDetailsComponent,
     PlaceListComponent,
-    PlaceDetailsComponent
+    PlaceDetailsComponent,
+    JourneyListComponent
   ],
   providers: [
     PetService,
