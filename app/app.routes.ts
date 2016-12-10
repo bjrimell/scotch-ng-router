@@ -4,8 +4,6 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { dogRoutes }    from './dogs/dog.routes';
-import { catRoutes }    from './cats/cat.routes';
 import { placeRoutes }  from './places/place.routes';
 import { journeyRoutes }  from './journeys/journey.routes';
 
@@ -13,11 +11,9 @@ import { journeyRoutes }  from './journeys/journey.routes';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dogs',
+    redirectTo: '/places',
     pathMatch: 'full'
   },
-  ...catRoutes,
-  ...dogRoutes,
   ...placeRoutes,
     ...journeyRoutes
 ];
