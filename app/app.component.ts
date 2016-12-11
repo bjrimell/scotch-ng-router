@@ -18,6 +18,7 @@ import { Component } from '@angular/core';
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link" [routerLink]="['/']">Home</a>
             <a class="mdl-navigation__link" [routerLink]="['/places']">Places</a>
+            <a class="mdl-navigation__link" [routerLink]="['/journeys']">Journeys</a>
           </nav>
         </div>
       </header>

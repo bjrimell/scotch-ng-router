@@ -1,6 +1,6 @@
 // Imports
 import { Injectable }    from '@angular/core';
-import { Jsonp, URLSearchParams, Http } from '@angular/http';
+import { Jsonp, URLSearchParams, Http, Headers, RequestOptions, RequestMethod, Request, Response } from '@angular/http';
 import { Journey } from './journey';
 import 'rxjs/add/operator/map';
 
@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class JourneyService {
   // Class constructor with Jsonp injected for CORS, Http also
-  constructor(private jsonp: Jsonp) { }
+  constructor(private jsonp: Jsonp, private http: Http) { }
   // Base URL for Petfinder API
   private databaseUrl = "http://localhost:8080/";
 
@@ -63,5 +63,22 @@ export class JourneyService {
                 .get(this.databaseUrl + endPoint, { search: params })
                 .map(response => <Journey[]> response.json());
   }
+
+    addJourney(data) {
+    let url = this.databaseUrl + 'api/journeys';
+    console.log(url);
+    let body = JSON.stringify(data);
+    let headers = new Headers();
+    //headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    //headers.append('Content-Type', 'application/json');
+    //headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    //headers.append('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+
+    //headers.append("Access-Control-Allow-Headers", "http://localhost:3000/journeys");
+    //headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    
+    this.http.post(url, data, {headers: headers}).subscribe();
+    }
 
 }

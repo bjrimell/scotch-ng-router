@@ -12,24 +12,13 @@ import { Journey } from '../journey';
 @Component({
   template: `
     <h2>Journeys</h2>
-    <p>List of journeys.</p>
-    <ul class="demo-list-icon mdl-list">
-      <li class="mdl-list__item" *ngFor="let journey of journeys | async">
-        <span class="mdl-list__item-primary-content">
-            <i class="material-icons mdl-list__item-icon">places</i>
-            {{journey.origin}} to {{journey.destination}} by {{journey.mode}}.<br>
-            Price: {{journey.price}}{{journey.currency}}<br>
-            Journey Start date: {{journey.journeyDate}}<br>
-            Journey Time: {{journey.journeyDuration}}<br>
-            Comments: {{journey.comments}}<br>
-            Upvotes: {{journey.upVotes}} Downvotes: {{journey.downVotes}}
-        </span>
-      </li>
-    </ul>
+    <p>This is where you can add a new journey.</p>
+    <a class="btn btn-info" role="button" [routerLink]="['/journeys/add']">Add Journey</a>
+    <a class="btn btn-info" role="button" [routerLink]="['/journeys/request']">Request Journey</a>
     `
 })
 // Component class
-export class JourneyListComponent implements OnInit {
+export class JourneyRequestComponent implements OnInit {
     // Private properties for binding
   private sub:any;
 
