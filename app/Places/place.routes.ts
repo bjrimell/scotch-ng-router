@@ -9,5 +9,5 @@ import { PlaceDetailsComponent }    from './place-details.component';
 // Route Configuration
 export const placeRoutes: Routes = [
   { path: 'places', component: PlaceListComponent },
-  { path: 'places/:id', component: PlaceDetailsComponent }
+  { path: 'places/:id', component: PlaceDetailsComponent}
 ];

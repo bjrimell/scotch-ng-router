@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-// Import router directives
-// Deprecated
-// import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Title }     from '@angular/platform-browser';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 
 @Component({
@@ -37,4 +39,24 @@ import { Component } from '@angular/core';
 })
 
 // App Component class
-export class AppComponent{}
+export class AppComponent{
+
+  public constructor(private titleService: Title, private router: Router, private activatedRoute: ActivatedRoute ) { }
+
+  public setTitle( newTitle: string) {
+    this.titleService.setTitle( newTitle );
+  }
+
+  ngOnInit() {
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .map(() => this.activatedRoute)
+      .map(route => {
+        while (route.firstChild) route = route.firstChild;
+        return route;
+      })
+      .filter(route => route.outlet === 'primary')
+      .mergeMap(route => route.data)
+      .subscribe((event) => this.titleService.setTitle(event['title']));
+  }
+}

@@ -88,7 +88,7 @@ export class JourneyAddComponent implements OnInit {
     this.placeService.addPlace(originPlace);
     var destinationPlace : Object = {name: this.destination};
     this.placeService.addPlace(destinationPlace);
-    this.router.navigate(['/journey/added']);
+    this.router.navigate(['/journeys/added']);
   };
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 // Imports
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { PlaceService } from '../place.service';
 import { JourneyService } from '../journey.service';
 import { Observable } from 'rxjs/Observable';
@@ -41,9 +42,11 @@ export class PlaceDetailsComponent implements OnInit {
   private sub:any;
   private place:Observable<Place>;
   private journeys: Observable<Journey[]>;
+  private journeysFromHere: Observable<Journey[]>;
+  private journeysToHere: Observable<Journey[]>;
 
-  constructor(private placeService: PlaceService, private journeyService: JourneyService, private route: ActivatedRoute) {
-
+  constructor(private placeService: PlaceService, private journeyService: JourneyService, private route: ActivatedRoute, private titleService: Title) {
+    titleService.setTitle('How to get to ');
   }
 
   // Load data ones componet is ready

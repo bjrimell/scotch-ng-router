@@ -1,6 +1,8 @@
 // Import component decorator
 import { Component, OnInit } from '@angular/core';
 
+import { Title } from '@angular/platform-browser';
+
 import { PlaceService } from '../place.service'
 
 import { Observable } from 'rxjs/Observable';
@@ -25,7 +27,8 @@ import { Place } from '../place';
 export class PlaceListComponent implements OnInit {
 
   places: Observable<Place[]>;
-  constructor(private placeService: PlaceService) {
+  constructor(private placeService: PlaceService, titleService: Title) {
+    titleService.setTitle('List of Places');
   }
 
   ngOnInit() {

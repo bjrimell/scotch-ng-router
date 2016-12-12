@@ -10,23 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { Journey } from '../journey';
 
 @Component({
-  template: `
-    <h2>Journeys</h2>
-    <p>List of journeys.</p>
-    <ul class="demo-list-icon mdl-list">
-      <li class="mdl-list__item" *ngFor="let journey of journeys | async">
-        <span class="mdl-list__item-primary-content">
-            <i class="material-icons mdl-list__item-icon">places</i>
-            {{journey.origin}} to {{journey.destination}} by {{journey.mode}}.<br>
-            Price: {{journey.price}}{{journey.currency}}<br>
-            Journey Start date: {{journey.journeyDate}}<br>
-            Journey Time: {{journey.journeyDuration}}<br>
-            Comments: {{journey.comments}}<br>
-            Upvotes: {{journey.upVotes}} Downvotes: {{journey.downVotes}}
-        </span>
-      </li>
-    </ul>
-    `
+  templateUrl:   `./app/Journeys/journey-list.component.html`
 })
 // Component class
 export class JourneyListComponent implements OnInit {
@@ -34,6 +18,8 @@ export class JourneyListComponent implements OnInit {
   private sub:any;
 
   journeys: Observable<Journey[]>;
+  origin: String;
+  destination: String;
   constructor(private journeyService: JourneyService, private route: ActivatedRoute) {
   }
 
@@ -44,6 +30,8 @@ export class JourneyListComponent implements OnInit {
         let destination = params['destination'];
                 console.log('Params are as follows: ' + params);
     this.journeys = this.journeyService.findJourneysByOriginAndDestination(origin, destination);
+    this.origin = origin;
+    this.destination = destination;
     });
   }
 
