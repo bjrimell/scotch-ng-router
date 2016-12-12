@@ -8,15 +8,16 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   template: `
-    <h2>This is the home page!</h2>
+    <h1>Find your perfect route</h1>
     <div class="form-group">
-      <label for="origin">Origin:</label>
-      <input type="text" class="form-control" id="origin">
+      <label for="origin">From:</label>
+      <input type="text" class="form-control" [(ngModel)]="origin" id="origin" placeholder="Enter journey origin">
     </div>
     <div class="form-group">
-      <label for="destination">Destination:</label>
-      <input type="text" class="form-control inline" id="destination">
+      <label for="destination">To:</label>
+      <input type="text" class="form-control inline" [(ngModel)]="destination" id="destination" placeholder="Enter journey destination">
     </div>
+    <div class="text-center"><a [routerLink]="['/journey', 'how-to-get-from', origin, 'to', destination]" class="btn btn-primary btn-lg" role="button">Search Journeys</a></div>
     `
 })
 // Component class
