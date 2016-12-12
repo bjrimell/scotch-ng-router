@@ -20,6 +20,7 @@ export class JourneyListComponent implements OnInit {
   journeys: Observable<Journey[]>;
   origin: String;
   destination: String;
+  hasVoted: Boolean;
   constructor(private journeyService: JourneyService, private route: ActivatedRoute) {
   }
 
@@ -43,10 +44,12 @@ export class JourneyListComponent implements OnInit {
   upVote(journey: Journey) {
     this.journeyService.upVote(journey._id);
     journey.upVotes ++;
+    this.hasVoted = true;
   }
 
     downVote(journey: Journey) {
     this.journeyService.downVote(journey._id);
     journey.downVotes ++;
+    this.hasVoted = true;
   }
 }

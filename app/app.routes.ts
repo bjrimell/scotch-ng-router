@@ -4,6 +4,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { homeRoutes }  from './home/home.routes';
 import { placeRoutes }  from './places/place.routes';
 import { journeyRoutes }  from './journeys/journey.routes';
 
@@ -11,11 +12,12 @@ import { journeyRoutes }  from './journeys/journey.routes';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/places',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   ...placeRoutes,
-    ...journeyRoutes
+    ...journeyRoutes,
+    ...homeRoutes
 ];
 
 // Deprecated provide
