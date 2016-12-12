@@ -9,6 +9,7 @@ import { PlaceDetailsComponent }  from './places/place-details.component';
 import { JourneyListComponent }  from './journeys/journey-list.component';
 import { JourneyLandingComponent }  from './journeys/journey-landing.component';
 import { JourneyAddComponent }  from './journeys/journey-add.component';
+import { JourneyAddedComponent }  from './journeys/journey-added.component';
 import { JourneyRequestComponent }  from './journeys/journey-request.component';
 import { JourneyService }          from './journey.service';
 import { PlaceService }          from './place.service';
@@ -30,6 +31,7 @@ import { routing } from './app.routes';
     JourneyListComponent,
     JourneyLandingComponent,
     JourneyAddComponent,
+    JourneyAddedComponent,
     JourneyRequestComponent
   ],
   providers: [

@@ -1,7 +1,7 @@
 // Import component decorator
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { JourneyService } from '../journey.service';
 
@@ -79,21 +79,16 @@ export class JourneyAddComponent implements OnInit {
   private sub:any;
 
   journeys: Observable<Journey[]>;
-  constructor(private journeyService: JourneyService, private placeService: PlaceService, private route: ActivatedRoute) {
+  constructor(private journeyService: JourneyService, private placeService: PlaceService, private router: Router) {
   }
 
   submitForm(form: any): void{
-    let bodyString = JSON.stringify(form);
-    console.log(bodyString);
     this.journeyService.addJourney(form);
     var originPlace : Object = {name: this.origin};
-    let originPlaceDataString = JSON.stringify(originPlace);
-    console.log(originPlaceDataString);
     this.placeService.addPlace(originPlace);
     var destinationPlace : Object = {name: this.destination};
-    let destinationPlaceDataString = JSON.stringify(destinationPlace);
-    console.log(destinationPlaceDataString);
     this.placeService.addPlace(destinationPlace);
+    this.router.navigate(['/journey/added']);
   };
 
   ngOnInit() {
