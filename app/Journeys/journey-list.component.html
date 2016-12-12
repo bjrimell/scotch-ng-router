@@ -7,14 +7,17 @@
       <div *ngFor="let journey of journeys | async" class="panel panel-default">
         <div class="panel-heading">
           <strong>{{journey.mode}}</strong> from <strong>{{journey.origin}}</strong> to <strong>{{journey.destination}}</strong>
-          <div class="text-right">Community Rating: <strong>{{journey.upVotes + journey.downVotes}}</strong></div>
+          <div class="text-right">Community Rating: <strong>{{journey.upVotes - journey.downVotes}}</strong></div>
         </div>
         <div class="panel-body">
             Price: {{journey.price}}{{journey.currency}}<br>
             Journey Start date: {{journey.journeyDate}}<br>
             Journey Time: {{journey.journeyDuration}}<br>
             Comments: {{journey.comments}}<br></div>
-        <div class="panel-footer">Upvotes: {{journey.upVotes}} Downvotes: {{journey.downVotes}}</div>
+        <div class="panel-footer">
+          <button class="btn btn-info btn-lg" (click)='upVote(journey)'> <span class="glyphicon glyphicon-thumbs-up"></span> {{journey.upVotes}} </button>
+          <button class="btn btn-info btn-lg" (click)='downVote(journey)'> <span class="glyphicon glyphicon-thumbs-down"></span> {{journey.downVotes}} </button>
+        </div>
       </div>
     </div>
   </div>

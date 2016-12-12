@@ -39,4 +39,14 @@ export class JourneyListComponent implements OnInit {
       // Clean sub to avoid memory leak
     this.sub.unsubscribe();
   }
+
+  upVote(journey: Journey) {
+    this.journeyService.upVote(journey._id);
+    journey.upVotes ++;
+  }
+
+    downVote(journey: Journey) {
+    this.journeyService.downVote(journey._id);
+    journey.downVotes ++;
+  }
 }

@@ -2,10 +2,10 @@
 .demo-layout-transparent {
   background: linear-gradient(
       rgba(0, 0, 255, 0.45),
-      rgba(0, 0, 255, 0.45)
+      rgba(0, 0, 255, 0.15)
     ),
     url('assets/scotch-dog1.jpg') center / cover;
-  height: 400px;
+  height: 200px;
 }
 
 /* Nav Bar */
@@ -19,7 +19,7 @@
 .header-text{
   text-align: center;
   vertical-align: middle;
-  line-height: 250px;
+  line-height: 50px;
   color: white;
 }
 

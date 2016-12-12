@@ -77,6 +77,8 @@ export class JourneyAddComponent implements OnInit {
 
       // Private properties for binding
   private sub:any;
+  private origin;
+  private destination;
 
   journeys: Observable<Journey[]>;
   constructor(private journeyService: JourneyService, private placeService: PlaceService, private router: Router) {

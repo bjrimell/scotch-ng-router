@@ -10,7 +10,7 @@ import 'rxjs/add/operator/mergeMap';
   selector: 'my-app',
   template: `
       <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-      <header class="mdl-layout__header mdl-layout__header--transparent">
+      <header class="mdl-layout__header md1-layout__header--transparent">
         <div class="mdl-layout__header-row">
           <!-- Title -->
           <span><a class="mdl-layout-title" [routerLink]="['/']">Crowd Routes</a></span>

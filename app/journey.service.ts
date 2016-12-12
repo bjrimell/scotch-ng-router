@@ -72,4 +72,19 @@ export class JourneyService {
     this.http.post(url, data, {headers: headers}).subscribe();
     }
 
+    upVote(data) {
+    let url = this.apiUrl + 'api/journeys/upvote/' + data;
+    console.log('URL is: ' + url);
+    let headers = new Headers();
+    
+    this.http.put(url, data, {headers: headers}).subscribe();
+    }
+
+    downVote(data) {
+    let url = this.apiUrl + 'api/journeys/downvote/' + data;
+    console.log('URL is: ' + url);
+    let headers = new Headers();
+    
+    this.http.put(url, data, {headers: headers}).subscribe();
+    }
 }
