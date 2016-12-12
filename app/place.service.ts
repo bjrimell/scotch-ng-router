@@ -1,6 +1,6 @@
 // Imports
 import { Injectable }    from '@angular/core';
-import { Jsonp, URLSearchParams } from '@angular/http';
+import { Jsonp, URLSearchParams, Http, Headers } from '@angular/http';
 import { Place } from './place';
 import 'rxjs/add/operator/map';
 
@@ -9,9 +9,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PlaceService {
   // Class constructor with Jsonp injected for CORS, Http also
-  constructor(private jsonp: Jsonp) { }
+  constructor(private jsonp: Jsonp, private http: Http) { }
   // Base URL for Petfinder API
-  private placesUrl = "http://localhost:8080/";
+  private apiUrl = "http://localhost:8080/";
+
+  addPlace(data) {
+    let url = this.apiUrl + 'api/places';
+    let headers = new Headers();
+    this.http.post(url, data, {headers: headers}).subscribe();
+  }
 
   findPlaces() {
     const endPoint = "api/places";
@@ -19,7 +25,7 @@ export class PlaceService {
     params.set('callback', 'JSONP_CALLBACK');
 
     return this.jsonp
-                .get(this.placesUrl + endPoint, { search: params })
+                .get(this.apiUrl + endPoint, { search: params })
                 .map(response => <Place[]> response.json());
   }
 
@@ -29,7 +35,7 @@ findPlaceById(placeId: string) {
     params.set('callback', 'JSONP_CALLBACK');
 
     return this.jsonp
-                .get(this.placesUrl + endPoint, { search: params })
+                .get(this.apiUrl + endPoint, { search: params })
                 .map(response => <Place[]> response.json());
   }
 
@@ -39,7 +45,7 @@ findPlaceById(placeId: string) {
     params.set('callback', 'JSONP_CALLBACK');
 
     return this.jsonp
-                .get(this.placesUrl + endPoint, { search: params })
+                .get(this.apiUrl + endPoint, { search: params })
                 .map(response => <Place[]> response.json());
   }
 

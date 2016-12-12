@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 
-import { JourneyService } from '../journey.service'
+import { JourneyService } from '../journey.service';
+
+import { PlaceService } from '../place.service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -17,55 +19,49 @@ import { Journey } from '../journey';
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Origin:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="origin" name="origin" ngModel placeholder="Enter origin">
+      <input type="text" class="form-control" id="origin" name="origin" [(ngModel)]="origin" placeholder="Enter origin">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Destination:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="destination" name="destination" ngModel placeholder="Enter destination">
+      <input type="text" class="form-control" id="destination" name="destination" [(ngModel)]="destination" placeholder="Enter destination">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Mode of transport:</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter mode of transport">
+      <input type="text" class="form-control" id="mode" name="mode" ngModel placeholder="Enter mode of transport">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Price Paid:</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter price paid">
+      <input type="text" class="form-control" id="price" name="price" ngModel placeholder="Enter price paid">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Currency:</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter currency">
+      <input type="text" class="form-control" id="currency" name="currency" ngModel placeholder="Enter currency used">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Journey Start Date:</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter date you started the journey">
+      <input type="text" class="form-control" id="journeyDate" name="journeyDate" ngModel placeholder="Enter journey start date">
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-sm-2" for="email">Journey Start Time:</label>
+    <label class="control-label col-sm-2" for="email">Journey Duration (hours):</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter time you started your journey">
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="email">Journey Duration:</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter journey duration in hours">
+      <input type="text" class="form-control" id="journeyDuration" name="journeyDuration" ngModel placeholder="Enter journey duration">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Comments:</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter additional comments">
+      <input type="text" class="form-control" id="comments" name="comments" ngModel placeholder="Enter comments">
     </div>
   </div>
   <div class="form-group">
@@ -83,15 +79,21 @@ export class JourneyAddComponent implements OnInit {
   private sub:any;
 
   journeys: Observable<Journey[]>;
-  constructor(private journeyService: JourneyService, private route: ActivatedRoute) {
+  constructor(private journeyService: JourneyService, private placeService: PlaceService, private route: ActivatedRoute) {
   }
 
   submitForm(form: any): void{
-    console.log('Form Data: ');
-    console.log(form);
     let bodyString = JSON.stringify(form);
     console.log(bodyString);
     this.journeyService.addJourney(form);
+    var originPlace : Object = {name: this.origin};
+    let originPlaceDataString = JSON.stringify(originPlace);
+    console.log(originPlaceDataString);
+    this.placeService.addPlace(originPlace);
+    var destinationPlace : Object = {name: this.destination};
+    let destinationPlaceDataString = JSON.stringify(destinationPlace);
+    console.log(destinationPlaceDataString);
+    this.placeService.addPlace(destinationPlace);
   };
 
   ngOnInit() {

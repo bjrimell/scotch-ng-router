@@ -11,7 +11,7 @@ export class JourneyService {
   // Class constructor with Jsonp injected for CORS, Http also
   constructor(private jsonp: Jsonp, private http: Http) { }
   // Base URL for Petfinder API
-  private databaseUrl = "http://localhost:8080/";
+  private apiUrl = "http://localhost:8080/";
 
     findJourneys() {
     const endPoint = "api/journeys";
@@ -19,7 +19,7 @@ export class JourneyService {
     params.set('callback', 'JSONP_CALLBACK');
 
     return this.jsonp
-                .get(this.databaseUrl + endPoint, { search: params })
+                .get(this.apiUrl + endPoint, { search: params })
                 .map(response => <Journey[]> response.json());
   }
 
@@ -29,7 +29,7 @@ export class JourneyService {
     params.set('callback', 'JSONP_CALLBACK');
 
     return this.jsonp
-                .get(this.databaseUrl + endPoint, { search: params })
+                .get(this.apiUrl + endPoint, { search: params })
                 .map(response => <Journey[]> response.json());
   }
 
@@ -40,7 +40,7 @@ export class JourneyService {
     params.set('callback', 'JSONP_CALLBACK');
 
     return this.jsonp
-                .get(this.databaseUrl + endPoint, { search: params })
+                .get(this.apiUrl + endPoint, { search: params })
                 .map(response => <Journey[]> response.json());
   }
 
@@ -50,33 +50,24 @@ export class JourneyService {
     params.set('callback', 'JSONP_CALLBACK');
 
     return this.jsonp
-                .get(this.databaseUrl + endPoint, { search: params })
+                .get(this.apiUrl + endPoint, { search: params })
                 .map(response => <Journey[]> response.json());
   }
 
     findJourneysByOriginAndDestination(origin: string, destination: string) {
     const endPoint = "api/journeys/from/" + origin + "/to/" + destination;
-    console.log(this.databaseUrl + endPoint);
+    console.log(this.apiUrl + endPoint);
         let params = new URLSearchParams();
     params.set('callback', 'JSONP_CALLBACK');
     return this.jsonp
-                .get(this.databaseUrl + endPoint, { search: params })
+                .get(this.apiUrl + endPoint, { search: params })
                 .map(response => <Journey[]> response.json());
   }
 
     addJourney(data) {
-    let url = this.databaseUrl + 'api/journeys';
-    console.log(url);
-    let body = JSON.stringify(data);
+    let url = this.apiUrl + 'api/journeys';
+    console.log('Add Journey Data Body object: ' + data.body);
     let headers = new Headers();
-    //headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    //headers.append('Content-Type', 'application/json');
-    //headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    //headers.append('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
-
-    //headers.append("Access-Control-Allow-Headers", "http://localhost:3000/journeys");
-    //headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
     
     this.http.post(url, data, {headers: headers}).subscribe();
     }
