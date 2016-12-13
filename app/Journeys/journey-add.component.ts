@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Title } from '@angular/platform-browser';
+
 import { JourneyService } from '../journey.service';
 
 import { PlaceService } from '../place.service';
@@ -81,7 +83,7 @@ export class JourneyAddComponent implements OnInit {
   private destination;
 
   journeys: Observable<Journey[]>;
-  constructor(private journeyService: JourneyService, private placeService: PlaceService, private router: Router) {
+  constructor(private journeyService: JourneyService, private placeService: PlaceService, private router: Router, private titleService: Title) {
   }
 
   submitForm(form: any): void{
@@ -94,6 +96,7 @@ export class JourneyAddComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.titleService.setTitle('Add a new journey');
   }
 
   ngOnDestroy() {

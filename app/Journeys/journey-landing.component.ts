@@ -1,6 +1,8 @@
 // Import component decorator
 import { Component, OnInit } from '@angular/core';
 
+import { Title } from '@angular/platform-browser';
+
 import { ActivatedRoute } from '@angular/router';
 
 import { JourneyService } from '../journey.service'
@@ -23,7 +25,7 @@ export class JourneyLandingComponent implements OnInit {
   private sub:any;
 
   journeys: Observable<Journey[]>;
-  constructor(private journeyService: JourneyService, private route: ActivatedRoute) {
+  constructor(private journeyService: JourneyService, private route: ActivatedRoute, private titleService: Title) {
   }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class JourneyLandingComponent implements OnInit {
         let destination = params['destination'];
                 console.log('Params are as follows: ' + params);
     this.journeys = this.journeyService.findJourneysByOriginAndDestination(origin, destination);
+    this.titleService.setTitle('Welcome to Crowd Routes - Journeys');
     });
   }
 

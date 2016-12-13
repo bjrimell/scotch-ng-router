@@ -1,6 +1,8 @@
 // Import component decorator
 import { Component, OnInit } from '@angular/core';
 
+import { Title }  from '@angular/platform-browser';
+
 import { ActivatedRoute } from '@angular/router';
 
 import { JourneyService } from '../journey.service'
@@ -21,7 +23,7 @@ export class JourneyListComponent implements OnInit {
   origin: String;
   destination: String;
   hasVoted: Boolean;
-  constructor(private journeyService: JourneyService, private route: ActivatedRoute) {
+  constructor(private journeyService: JourneyService, private route: ActivatedRoute, private titleService: Title) {
   }
 
   ngOnInit() {
@@ -33,6 +35,8 @@ export class JourneyListComponent implements OnInit {
     this.journeys = this.journeyService.findJourneysByOriginAndDestination(origin, destination);
     this.origin = origin;
     this.destination = destination;
+
+    this.titleService.setTitle('How to get from ' + this.origin + " to " + this.destination) ;
     });
   }
 

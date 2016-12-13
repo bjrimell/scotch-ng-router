@@ -46,7 +46,6 @@ export class PlaceDetailsComponent implements OnInit {
   private journeysToHere: Observable<Journey[]>;
 
   constructor(private placeService: PlaceService, private journeyService: JourneyService, private route: ActivatedRoute, private titleService: Title) {
-    titleService.setTitle('How to get to ');
   }
 
   // Load data ones componet is ready
@@ -58,6 +57,7 @@ export class PlaceDetailsComponent implements OnInit {
         this.placeService.findPlaceByName(id).subscribe(place => this.place = place);
         this.journeysFromHere = this.journeyService.findJourneysByOrigin(id);
         this.journeysToHere = this.journeyService.findJourneysByDestination(id);
+        this.titleService.setTitle('How to get to ' + id) ;
     });
   }
 
