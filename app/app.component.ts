@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute, Event } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+
+declare let ga:Function;
 
 
 @Component({
@@ -41,7 +43,16 @@ import 'rxjs/add/operator/mergeMap';
 // App Component class
 export class AppComponent{
 
-  public constructor(private titleService: Title, private router: Router, private activatedRoute: ActivatedRoute ) { }
+  public constructor(private titleService: Title, private router: Router, private activatedRoute: ActivatedRoute ) {
+
+        this.router.events.subscribe(
+            (event:Event) => {
+                if (event instanceof NavigationEnd) {
+                    ga('send', 'pageview', event.urlAfterRedirects);
+                }
+            });
+
+  }
 
   public setTitle( newTitle: string) {
     this.titleService.setTitle( newTitle );
