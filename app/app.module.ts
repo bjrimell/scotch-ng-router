@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent }         from './app.component';
+import { AdComponent }         from './ad.component';
 import { HomeComponent }      from './home/home.component';
 import { PlaceListComponent }      from './places/place-list.component';
 import { PlaceDetailsComponent }  from './places/place-details.component';
@@ -34,7 +35,8 @@ import { routing } from './app.routes';
     JourneyLandingComponent,
     JourneyAddComponent,
     JourneyAddedComponent,
-    JourneyRequestComponent
+    JourneyRequestComponent,
+    AdComponent
   ],
   providers: [
     Title,
